@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
   try {
     await client.connect();
     const result = await client.query(
-      'SELECT password FROM users WHERE username = $1',
+      'SELECT username, name, avatar, password FROM users WHERE username = $1',
       [username]
     );
     await client.end();
@@ -28,7 +28,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
     }
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    return NextResponse.json({
+      success: true,
+      username: result.rows[0].username,
+      name: result.rows[0].name,
+      avatar: result.rows[0].avatar ? result.rows[0].avatar.toString('base64') : null,
+    });
+
   } catch (error) {
     console.error('Login error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

@@ -28,12 +28,18 @@ export default function LoginModal({ open, onClose, onSuccess }: LoginModalProps
       });
 
       if (res.ok) {
-        onSuccess();
-        setUsername('');
-        setPassword('');
-      } else {
-        const result = await res.json();
-        setError(result.error || 'Login failed');
+  const data = await res.json();
+  localStorage.setItem('user', JSON.stringify({
+    username: data.username,
+    name: data.name,
+    avatar: data.avatar,
+  }));
+  onSuccess();
+}
+
+      else {
+              const result = await res.json();
+              setError(result.error || 'Login failed');
       }
     } catch (err) {
       setError('Network error');
