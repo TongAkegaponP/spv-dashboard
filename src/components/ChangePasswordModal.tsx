@@ -83,8 +83,8 @@ export default function ChangePasswordModal({ open, onClose }: ChangePasswordMod
                 className="border p-2 w-full rounded"
               />
               <div className="flex justify-end gap-2">
-                <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded">Cancel</button>
-                <button type="submit" disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded">
+                <button type="button" onClick={onClose} className="px-4 py-2 bg-gray-300 rounded-full hover:cursor-pointer">Cancel</button>
+                <button type="submit" disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded-full hover:cursor-pointer">
                   {loading ? 'Updating...' : 'Update'}
                 </button>
               </div>

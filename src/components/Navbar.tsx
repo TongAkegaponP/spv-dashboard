@@ -55,7 +55,7 @@ export default function Navbar() {
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-100 transition"
+          className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-100 transition hover:cursor-pointer"
         >
           {user.avatar ? (
             <img
@@ -64,8 +64,9 @@ export default function Navbar() {
               className="w-8 h-8 rounded-full object-cover"
             />
           ) : (
-            <TextAvatar name={user.name} />
+            <TextAvatar username={user.username} />
           )}
+          <span>|</span>
           <span className="text-gray-800 font-semibold">{user.name}</span>
         </button>
 
@@ -82,7 +83,7 @@ export default function Navbar() {
                   setShowChangePassword(true);
                   setDropdownOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 hover:cursor-pointer"
               >
                 Change Password
               </button>
@@ -91,7 +92,7 @@ export default function Navbar() {
                   setShowChangeAvatar(true);
                   setDropdownOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100"
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 hover:cursor-pointer"
               >
                 Change Avatar
               </button>
@@ -100,7 +101,7 @@ export default function Navbar() {
                   setShowLogoutConfirm(true);
                   setDropdownOpen(false);
                 }}
-                className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100"
+                className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 hover:cursor-pointer"
               >
                 Log Out
               </button>
@@ -110,7 +111,7 @@ export default function Navbar() {
       </div>
     ) : (
       <button
-        className="bg-green-600 py-2 px-4 rounded-md text-white text-2xl font-semibold hover:scale-110 transition"
+        className="bg-green-600 py-2 px-4 rounded-md text-white text-2xl font-semibold hover:scale-110 transition hover:cursor-pointer"
         onClick={() => setShowLogin(true)}
       >
         LOGIN
@@ -177,7 +178,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-gray-800 text-xl font-semibold hover:scale-110 transition"
+                  className="text-gray-800 text-base font-semibold hover:scale-110 transition"
                 >
                   {item.name}
                 </a>
@@ -207,13 +208,13 @@ export default function Navbar() {
                 <div className="flex justify-center gap-4">
                   <button
                     onClick={() => setShowLogoutConfirm(false)}
-                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                    className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 hover:cursor-pointer"
                   >
                     Cancel
                   </button>
                   <button
                     onClick={handleLogout}
-                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                    className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 hover:cursor-pointer"
                   >
                     Log Out
                   </button>
